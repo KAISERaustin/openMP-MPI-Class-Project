@@ -217,8 +217,8 @@ int main(int argc, char** argv) {
                 MPI_DOUBLE, C_full, elements_to_send, starting_element_offset, 
                 MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-    long double first_two_rows_sum_global = 0.0;
-    MPI_Reduce(&first_two_rows_sum, &first_two_rows_sum_global, 1, MPI_LONG_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
+    double first_two_rows_sum_global = 0.0;
+    MPI_Reduce(&first_two_rows_sum, &first_two_rows_sum_global, 1, MPI_DOUBLE, MPI_SUM, 0, MPI_COMM_WORLD);
 
     // only allow rank 0 to compute and print the checksum and elapsed time
     if(id == 0) 
