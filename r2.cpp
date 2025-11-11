@@ -99,6 +99,7 @@ int main(int argc, char** argv) {
     double t0 = omp_get_wtime();
 
     // performs matrix multiplication C = A * B
+    int j, k;
 #pragma omp parallel for schedule(runtime) shared (A, B, C, N ) private ( j, k )
     // loops over rows of A
     for ( int i = 0; i < N; ++i ) {
@@ -107,13 +108,13 @@ int main(int argc, char** argv) {
         // points to the beginning of the correct row of A
         double* A_row = A + i * N;
         // performs the product of the row of A with columns of B
-        for ( int k = 0; k < N; ++ k ) {
+        for ( k = 0; k < N; ++ k ) {
             // retrieves the value of A[i][k]
             double a_ik = A_row[k];
             // points to the beginning of row k of B
             double* B_row = B + k * N;
             // performs the multiplication of A[i][k] with row k of B and accumulates into C[i][j]
-            for ( int j = 0; j < N; j++ ) {
+            for ( j = 0; j < N; j++ ) {
                 // C[i][j] += A[i][k] * B[k][j];
                 C_row[j] += a_ik * B_row[j];
             }

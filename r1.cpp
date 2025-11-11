@@ -232,7 +232,7 @@ int main(int argc, char** argv) {
         // ALWAYS FLUSH STDOUT AFTER PRINTING IN AN MPI PROGRAM
         fflush(stdout);
         // prints out the checksum comparison
-        printf("Checksum of first two rows: %.6Lf\nChecksum of the MPI first two rows: %.6Lf\n", check, first_two_rows_sum_global);
+        printf("Checksum of first two rows: %.6Lf\nChecksum of the MPI first two rows: %.6f\n", check, first_two_rows_sum_global);
         // ALWAYS FLUSH STDOUT AFTER PRINTING IN AN MPI PROGRAM
         fflush(stdout);
 
