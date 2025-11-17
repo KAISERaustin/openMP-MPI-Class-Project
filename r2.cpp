@@ -110,13 +110,13 @@ int main(int argc, char** argv) {
         // performs the product of the row of A with columns of B
         for ( k = 0; k < N; ++ k ) {
             // retrieves the value of A[i][k]
-            double a_ik = A_row[k];
+            double A_row_k = A_row[k];
             // points to the beginning of row k of B
             double* B_row = B + k * N;
             // performs the multiplication of A[i][k] with row k of B and accumulates into C[i][j]
             for ( j = 0; j < N; j++ ) {
                 // C[i][j] += A[i][k] * B[k][j];
-                C_row[j] += a_ik * B_row[j];
+                C_row[j] += A_row_k * B_row[j];
             }
         }
     }
