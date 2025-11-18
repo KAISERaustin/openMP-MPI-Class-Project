@@ -139,7 +139,7 @@ int main(int argc, char** argv) {
     long double check = checksum( A, B, N, 0, 1);
 
     // prints out the results
-    printf("\nHost: %s | Size: %d x %d | Threads: %d \nSchedule: %s | Chunk: %d | Time: %.6f s | \nChecksum: %.0Lf | First two rows sum: %.0f\n\n",
+    printf("Host: %s | Size: %d x %d | Threads: %d \nSchedule: %s | Chunk: %d | Time: %.6f s | \nChecksum: %.0Lf | First two rows sum: %.0f\n",
             host, N, N, thread_count, schedule_string, CHUNK, t1 - t0, check, first_two_rows_sum );
 
     // frees matrices A, B, and C

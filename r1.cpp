@@ -143,6 +143,9 @@ int main(int argc, char** argv) {
         fill_rand(B, N * N, SD + 2);
     }
 
+    // starts the timer and stores the start time in t0
+    double t0 = MPI_Wtime();
+
     // broadcasts matrix B to all processes
     MPI_Bcast(B, N * N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
@@ -151,11 +154,6 @@ int main(int argc, char** argv) {
                 starting_element_offset, MPI_DOUBLE, A_local, local_rows * N, 
                 MPI_DOUBLE, 0, MPI_COMM_WORLD);
 
-
-    // synchronizes all processes before starting the timer
-    MPI_Barrier(MPI_COMM_WORLD);
-    // starts the timer and stores the start time in t0
-    double t0 = MPI_Wtime();
     double first_two_rows_sum = 0.0;
 
     // performs local matrix multiplication C_local = A_local * B
@@ -178,9 +176,6 @@ int main(int argc, char** argv) {
             }
         }
     }
-
-    // synchronizes all processes before stopping the timer
-    MPI_Barrier(MPI_COMM_WORLD);
 
     // stops the timer and stores the end time in t1
     double t1 = MPI_Wtime();
